@@ -1,11 +1,8 @@
-'use client'
 import Link from 'next/link';
-import useAuthContext from '../hooks/use-authentication';
 import {useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 
 function Header() {
-  const { currentUser, signOut, isSignIn } = useAuthContext();
   const router = useRouter();
   
   const routesAndLink = [
@@ -24,11 +21,11 @@ function Header() {
     )
   })
 
-  useEffect(() => {
-    if(!isSignIn()) {
-      router.push('/login');
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(!isSignIn()) {
+  //     router.push('/login');
+  //   }
+  // }, [])
 
   return (
     <header className="bg-gray-900 text-white">
@@ -40,9 +37,9 @@ function Header() {
             </Link>
           </li>
           <li>
-            {currentUser ? <ul className="flex space-x-4">
+            <ul className="flex space-x-4">
               {rednerMenu}
-            </ul> : ''}
+            </ul>
           </li>
         </ul>
       </nav>
